@@ -10,6 +10,7 @@
     <packaging>war</packaging>
 
 
+    <!--  在gitee中给这里添加一个pom文件注释-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
