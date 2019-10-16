@@ -31,4 +31,9 @@ public interface ItemService {
      * @param id
      */
     void deleteItem(Integer id);
+
+    /**
+     * 根据Id查询商品信息
+     */
+    Item FindItemById(Integer id);
 }

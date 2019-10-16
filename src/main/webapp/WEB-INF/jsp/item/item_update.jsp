@@ -38,7 +38,7 @@
             <td><label for="description">商品简介:</label></td>
             <td>
                 <div class="form-group">
-                    <textarea id="description"style="resize: none" name="description" class="form-control" rows="3"placeholder="请描述商品"></textarea>
+                    <textarea id="description"style="resize: none" name="description" class="form-control" rows="3"placeholder="请描述商品">${item.description}</textarea>
                 </div>
             </td>
         </tr>

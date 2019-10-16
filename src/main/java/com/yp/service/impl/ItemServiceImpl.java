@@ -48,4 +48,14 @@ public class ItemServiceImpl implements ItemService {
 //        item.setId(id);
         int count = itemMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public Item FindItemById(Integer id) {
+        Item item = itemMapper.selectByPrimaryKey(id);
+        if(item == null){
+            log.error("【修改商品】 参数不正确！id={}",id);
+            throw new SsmException(ExceptionInfoEnum.PARAM_ERROR.getCode(),"参数不正确!");
+        }
+        return item;
+    }
 }

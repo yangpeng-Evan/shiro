@@ -60,7 +60,7 @@
 				<img src="${item.pic }" style="width:80px;height:80px;" />
 			</td>
 			<td>
-				<button type="button" class="btn btn-warning">修改</button>
+				<button type="button" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/item/update-ui?id=${item.id}'">修改</button>
 				<button type="button" class="btn btn-warning" onclick="deleteItem(this,${item.id})">删除</button>
 			</td>
 		</tr>
@@ -112,5 +112,7 @@
 			}
 		});
 	}
+
+
 </script>
 </html>

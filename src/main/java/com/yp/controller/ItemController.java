@@ -140,4 +140,14 @@ public class ItemController {
         }
         return new ResultVO(0,"成功",null);
     }
+
+    //映射商品信息页面并回显商品数据
+    @GetMapping("/update-ui")
+    public String updateUI(Integer id,HttpServletRequest request){
+        Item item = itemService.FindItemById(id);
+        request.setAttribute("item",item);
+        return "item/item_update";
+    }
+
 }
+
