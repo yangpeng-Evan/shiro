@@ -24,10 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author yangpeng
@@ -152,7 +149,7 @@ public class ItemController {
     //修改商品信息
     @PostMapping("/update")
     @ResponseBody
-    public String updateItem(MultipartFile picFile,
+    public ResultVO updateItem(MultipartFile picFile,
                                @Valid Item item, BindingResult bindingResult, HttpServletRequest request) throws IOException {
         if(picFile==null || picFile.getSize()==0){
             log.info("【修改商品】 商品图片为必传项，不能为空");
@@ -189,6 +186,7 @@ public class ItemController {
 //        5.6 将图片的访问路径设置到item对象中.
         String pic = request.getContextPath() + "/static/images/" + newName;
         item.setPic(pic);
+        item.setCreated(new Date());
 //        6. 校验普通表单项.
         if (bindingResult.hasErrors()){
             String msg = bindingResult.getFieldError().getDefaultMessage();
@@ -198,7 +196,7 @@ public class ItemController {
 //        7. 调用serivce保存.
         itemService.updateItemById(item);
 //        8. 响应数据.
-        return "item/list";
+        return new ResultVO(0,"成功",null);
     }
 
 }
