@@ -36,4 +36,10 @@ public interface ItemService {
      * 根据Id查询商品信息
      */
     Item FindItemById(Integer id);
+
+    /**
+     * 修改商品信息接口
+     * @param item
+     */
+    void updateItemById(Item item);
 }

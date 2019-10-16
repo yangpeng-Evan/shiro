@@ -13,6 +13,9 @@
 <div class="page-header">
     <h1>修改商品</h1>
 </div>
+<div>
+    <p id="updateInfo" style="color: red"></p>
+</div>
 <form action="" method="">
 	<input type="hidden" name="id" value="" />
     <table class="table table-hover">
@@ -57,7 +60,7 @@
         </tr>
         <tr class="danger">
             <td colspan="2">
-                <input type="submit" class="btn btn-danger" value="修改商品"/>
+                <input type="button" class="btn btn-danger" value="修改商品" onclick="updateItem()"/>
             </td>
         </tr>
     </table>
@@ -78,6 +81,38 @@
         }else{
             prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
         }
+    }
+
+    function updateItem() {
+        // 2. 封装数据.  layUI
+        var formData = new FormData();
+        formData.append("picFile",$("#picFile")[0].files[0]);
+        formData.append("name",$("#name").val());
+        formData.append("price",$("#price").val());
+        formData.append("productionDate",$("#productionDate").val());
+        formData.append("description",$("#description").val());
+        // 3. 发送ajax请求,并携带封装好的数据.
+        $.ajax({
+            url: "${pageContext.request.contextPath}/item/update",
+            data: formData,
+            type: "post",
+            dataType: "json",
+            success: function(result){
+                // 4.1 如果添加成功 -> 跳转到/item/list
+                <%--if(result.code == 0){--%>
+                <%--    alert("修改成功！")--%>
+                <%--    //location.href = "${pageContext.request.contextPath}/item/list";--%>
+                <%--}else {--%>
+                <%--    // 4.2 如果添加失败 -> 给用户提示.--%>
+                <%--    $("#updateInfo").html(result.msg);--%>
+                <%--}--%>
+            },
+            error: function(){
+                alert("服务器爆炸!");
+            },
+            contentType: false,
+            processData: false
+        });
     }
 </script>
 </html>
