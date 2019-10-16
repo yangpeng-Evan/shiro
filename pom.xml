@@ -46,12 +46,14 @@
             <version>4.3.8.RELEASE</version>
         </dependency>
         <!--    dao层:-->
+        <!--  测试添加-->
         <!--    mysql驱动 , druid连接池 , mybatis , mybatis-spring , mapper , pagehelper-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
         </dependency>
+        <!--连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
